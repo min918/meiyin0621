@@ -47,7 +47,7 @@ onMounted(() => {
 
     <h1 color="$ep-color-primary">项目查询</h1>
 
-    <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable class="inline-input w-80 m-2"
+    <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable class="inline-input"
       placeholder="输入关键字" @select="handleSelect" />
 
     <div class="bottom-section">
