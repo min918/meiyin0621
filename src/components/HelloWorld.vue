@@ -3,7 +3,6 @@ import { onMounted, ref } from 'vue'
 import { ElMessage } from "element-plus";
 import jsonData from './../data/project.json';
 
-
 interface RestaurantItem {
   value: string
 }
@@ -41,98 +40,20 @@ onMounted(() => {
   restaurants.value = loadAll()
 })
 
-defineProps<{ msg: string }>();
-
-const count = ref(0);
-const input = ref("element-plus");
-
-const curDate = ref("");
-
-const toast = () => {
-  ElMessage.success(state2.value);
-};
-
-const value1 = ref(true);
 </script>
 
 <template>
-  <h1 color="$ep-color-primary">项目查询</h1>
+  <!-- <div w="full" h="full" p="4" bg="gray-100"> -->
 
-  <!-- <p>
-    See
-    <a href="https://element-plus.org" target="_blank">element-plus</a> for more
-    information.
-  </p> -->
+    <h1 color="$ep-color-primary">项目查询</h1>
 
-  <!-- <el-divider>
-    <el-icon><star-filled /></el-icon>
-  </el-divider> -->
+    <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable class="inline-input w-80 m-2"
+      placeholder="输入关键字" @select="handleSelect" />
 
-  <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable class="inline-input w-100"
-    placeholder="输入关键字" @select="handleSelect" />
-
-  <div class="bottom-section">
-    <el-text class="mx-2" type="primary">{{ state2 }}</el-text>
-  </div>
-
-  <!-- example components -->
-  <!-- <div class="mb-4">
-    <el-button size="large" @click="toast">El Message</el-button>
-  </div> -->
-
-  <!-- <div class="my-2 text-center flex flex-wrap justify-center items-center">
-    <el-button @click="count++">count is: {{ count }}</el-button>
-    <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
-    <el-button type="success" @click="count++">count is: {{ count }}</el-button>
-    <el-button type="warning" @click="count++">count is: {{ count }}</el-button>
-    <el-button type="danger" @click="count++">count is: {{ count }}</el-button>
-    <el-button type="info" @click="count++">count is: {{ count }}</el-button>
-  </div> -->
-
-  <!-- <div>
-    <el-switch v-model="value1" />
-    <el-switch
-      v-model="value1"
-      class="m-2"
-      style="--ep-switch-on-color: black; --ep-switch-off-color: gray;"
-    />
-  </div> -->
-
-  <!-- <div class="my-2">
-    <el-input class="m-2" v-model="input" style="width: 200px" />
-    <el-date-picker
-      class="m-2"
-      v-model="curDate"
-      type="date"
-      placeholder="Pick a day"
-    ></el-date-picker>
-  </div> -->
-
-  <!-- <p>For example, we can custom primary color to 'green'.</p>
-
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test components.
-  </p>
-  <p>
-    Edit
-    <code>styles/element/var.scss</code> to test scss variables.
-  </p>
-
-  <p>
-    Full Example:
-    <a
-      href="https://github.com/element-plus/element-plus-vite-starter"
-      target="_blank"
-      >element-plus-vite-starter</a
-    >
-    | On demand Example:
-    <a
-      href="https://github.com/element-plus/unplugin-element-plus"
-      target="_blank"
-      >unplugin-element-plus/examples/vite</a
-    >
-  </p> -->
+    <div class="bottom-section">
+      <el-text class="mx-2" type="primary">{{ state2 }}</el-text>
+    </div>
+  <!-- </div> -->
 </template>
 
 <style>
@@ -152,5 +73,4 @@ const value1 = ref(true);
   gap: 15px;
   padding: 30px;
 }
-
 </style>
