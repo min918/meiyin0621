@@ -73,33 +73,39 @@ onMounted(() => {
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">检测项目:</el-text>
         <el-text size="large"> {{ state2 }}</el-text></span>
+        <el-divider />
 
     </el-row>
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">检测方法: </el-text>
         <el-text size="large"> {{ state3 }}</el-text></span>
+        <el-divider />
 
     </el-row>
 
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">报告时间: </el-text>
         <el-text size="large"> {{ state4 }}</el-text></span>
+        <el-divider />
 
     </el-row>
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">标本要求: </el-text>
         <el-text size="large"> {{ state5 }}</el-text></span>
+        <el-divider />
 
     </el-row>
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">标本保存条件: </el-text>
         <el-text size="large"> {{ state6 }}</el-text></span>
+        <el-divider />
 
     </el-row>
 
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">临床意义: </el-text>
         <el-text size="large"> {{ state7 }}</el-text></span>
+        <el-divider />
 
     </el-row>
 
