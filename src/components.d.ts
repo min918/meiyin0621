@@ -11,6 +11,7 @@ declare module 'vue' {
     BaseSide: typeof import('./components/layouts/BaseSide.vue')['default']
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElRow: typeof import('element-plus/es')['ElRow']
     ElText: typeof import('element-plus/es')['ElText']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Logos: typeof import('./components/Logos.vue')['default']
