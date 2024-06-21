@@ -70,7 +70,7 @@ onMounted(() => {
 
 .top-section {
   text-align: center;
-  padding: 1.5rem;
+  padding: 10%;
 }
 
 .bottom-section {
