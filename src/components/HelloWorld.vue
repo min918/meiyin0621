@@ -47,8 +47,10 @@ onMounted(() => {
 
     <h1 color="$ep-color-primary">项目查询</h1>
 
+    <div class="top-section">
     <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable class="inline-input"
       placeholder="输入关键字" @select="handleSelect" />
+    </div>
 
     <div class="bottom-section">
       <el-text class="mx-2" type="primary">{{ state2 }}</el-text>
@@ -64,6 +66,11 @@ onMounted(() => {
 .ep-button+.ep-button {
   margin-left: 0;
   margin: 4px;
+}
+
+.top-section {
+  text-align: center;
+  padding: 10%;
 }
 
 .bottom-section {
