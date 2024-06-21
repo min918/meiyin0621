@@ -21,7 +21,7 @@ const querySearch = (queryString: string, cb: any) => {
 const createFilter = (queryString: string) => {
   return (restaurant: RestaurantItem) => {
     return (
-      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+      restaurant.value.toLowerCase().match((queryString.toLowerCase()))
     )
   }
 }
