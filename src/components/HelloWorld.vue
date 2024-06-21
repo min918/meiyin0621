@@ -53,7 +53,7 @@ onMounted(() => {
     </div>
 
     <div class="bottom-section">
-      <el-text class="mx-2" type="primary">{{ state2 }}</el-text>
+      <el-text size="large" class="mx-2" type="success">{{ state2 }}</el-text>
     </div>
   <!-- </div> -->
 </template>
@@ -70,7 +70,7 @@ onMounted(() => {
 
 .top-section {
   text-align: center;
-  padding: 10%;
+  padding: 1.5rem;
 }
 
 .bottom-section {
