@@ -111,11 +111,11 @@ onMounted(() => {
   </el-autocomplete> -->
 
   <div class="my-autocomplete">
-  <el-autocomplete size="small" v-model="state1" :fetch-suggestions="querySearch" clearable
+  <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable
     placeholder="输入关键字" @select="handleSelect" @clear="handleClear">
   
     <template #prepend>
-      <el-select size="small" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
+      <el-select size="large" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
         <el-option
         v-for="item in options"
         :key="item.value1"
