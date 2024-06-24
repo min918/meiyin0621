@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import jsonData from './../data/data1.json';
+import optionsData from './../data/data2.json';
+
+const select = ref('')
 
 interface RestaurantItem {
   value: string,
@@ -10,6 +13,21 @@ interface RestaurantItem {
   factor1: string,
   sign1: string
 }
+
+interface Items {
+  value1: string,
+  label1: string
+}
+
+interface data {
+  value1: string,
+  label1: string,
+  data:[]
+}
+
+const datas = ref<data>()
+
+const options = ref<Items[]>([])
 
 const state1 = ref('')
 const state2 = ref('')
@@ -49,14 +67,20 @@ const handleSelect = (item: RestaurantItem) => {
   state6.value = item.factor1
   state7.value = item.sign1
 }
+
 const handleClear = (item: RestaurantItem) => {
-  console.log(item)
   isShow.value = false
 }
 
+const handleChange = (item: Items) => {
+  const results = optionsData.filter(item1 => item1.value1 === item);
+  // console.log(results[0].data)
+  restaurants.value = results[0].data
+
+}
 
 onMounted(() => {
-  restaurants.value = loadAll()
+  options.value = optionsData
 })
 
 </script>
@@ -66,46 +90,87 @@ onMounted(() => {
 
   <h1 color="$ep-color-primary">项目查询</h1>
 
-  <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable
-    class="inline-input w-80 m-2" placeholder="输入关键字" @select="handleSelect" @clear="handleClear" />
+  <!-- <el-autocomplete
+    v-model="state1"
+    :fetch-suggestions="querySearch"
+    popper-class="my-autocomplete"
+    placeholder="Please input"
+    @select="handleSelect"
+  >
+    <template #prepend>
+      <el-select v-model="select" placeholder="Select" style="width: 100px">
+          <el-option label="肝胆功能检测" value="1" />
+          <el-option label="肾功能检测" value="2" />
+          <el-option label="电解质检测" value="3" />
+        </el-select>
+    </template>
+    <template #default="{ item }">
+      <div class="value">{{ item.value }}</div>
+      <span class="link">{{ item.link }}</span>
+    </template>
+  </el-autocomplete> -->
+
+  <div class="my-autocomplete">
+  <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable
+    placeholder="输入关键字" @select="handleSelect" @clear="handleClear">
+  
+    <template #prepend>
+      <el-select size="default" v-model="select" placeholder="一级项目" style="width: 150px" @change="handleChange">
+        <el-option
+        v-for="item in options"
+        :key="item.value1"
+        :label="item.label1"
+        :value="item.value1"
+      />
+      </el-select>
+    </template>
+    <!-- <template #default="{ item }">
+      <div class="value">{{ item.value }}</div>
+      <span class="link">{{ item.link }}</span>
+    </template> -->
+  </el-autocomplete> 
+</div>
+
+  <!-- <el-autocomplete size="large" class="inline-input" v-model="state1" :fetch-suggestions="querySearch" clearable
+    placeholder="输入关键字" @select="handleSelect" @clear="handleClear"></el-autocomplete> -->
 
   <div class="bottom-section" v-if="isShow">
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">检测项目:</el-text>
         <el-text size="large"> {{ state2 }}</el-text></span>
-        <el-divider />
+      <el-divider />
 
     </el-row>
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">检测方法: </el-text>
         <el-text size="large"> {{ state3 }}</el-text></span>
-        <el-divider />
+      <el-divider />
 
     </el-row>
 
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">报告时间: </el-text>
         <el-text size="large"> {{ state4 }}</el-text></span>
-        <el-divider />
+      <el-divider />
 
     </el-row>
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">标本要求: </el-text>
         <el-text size="large"> {{ state5 }}</el-text></span>
-        <el-divider />
+      <el-divider />
 
     </el-row>
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">标本保存条件: </el-text>
         <el-text size="large"> {{ state6 }}</el-text></span>
-        <el-divider />
+      <el-divider />
 
     </el-row>
 
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">临床意义: </el-text>
         <el-text size="large"> {{ state7 }}</el-text></span>
-        <el-divider />
+      <el-divider />
 
     </el-row>
 
@@ -113,7 +178,15 @@ onMounted(() => {
 
 </template>
 
-<style>
+<style scoped>
+.my-autocomplete {
+  display: flex;
+  width: 90%;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .ep-button {
   margin: 4px;
 }
@@ -130,6 +203,6 @@ onMounted(() => {
   flex-wrap: wrap;
   flex-direction: column;
   gap: 15px;
-  padding: 20px;
+  padding: 1.5rem;
 }
 </style>
