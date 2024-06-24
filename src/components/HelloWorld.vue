@@ -74,9 +74,9 @@ const handleClear = (item: RestaurantItem) => {
 
 const handleChange = (item: Items) => {
   const results = optionsData.filter(item1 => item1.value1 === item);
-  // console.log(results[0].data)
   restaurants.value = results[0].data
-
+  state1.value = ''
+  isShow.value = false
 }
 
 onMounted(() => {
@@ -111,11 +111,11 @@ onMounted(() => {
   </el-autocomplete> -->
 
   <div class="my-autocomplete">
-  <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable
+  <el-autocomplete size="small" v-model="state1" :fetch-suggestions="querySearch" clearable
     placeholder="输入关键字" @select="handleSelect" @clear="handleClear">
   
     <template #prepend>
-      <el-select size="default" v-model="select" placeholder="一级项目" style="width: 150px" @change="handleChange">
+      <el-select size="small" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
         <el-option
         v-for="item in options"
         :key="item.value1"
