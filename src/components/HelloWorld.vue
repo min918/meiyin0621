@@ -22,7 +22,7 @@ interface Items {
 interface data {
   value1: string,
   label1: string,
-  data:[]
+  data: []
 }
 
 const datas = ref<data>()
@@ -104,32 +104,27 @@ onMounted(() => {
           <el-option label="电解质检测" value="3" />
         </el-select>
     </template>
-    <template #default="{ item }">
+<template #default="{ item }">
       <div class="value">{{ item.value }}</div>
       <span class="link">{{ item.link }}</span>
     </template>
-  </el-autocomplete> -->
+</el-autocomplete> -->
 
   <div class="my-autocomplete">
-  <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable
-    placeholder="输入关键字" @select="handleSelect" @clear="handleClear">
-  
-    <template #prepend>
-      <el-select size="large" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
-        <el-option
-        v-for="item in options"
-        :key="item.value1"
-        :label="item.label1"
-        :value="item.value1"
-      />
-      </el-select>
-    </template>
-    <!-- <template #default="{ item }">
+    <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
+      popper-append-to-body=false @select="handleSelect" @clear="handleClear">
+
+      <template #prepend>
+        <el-select size="default" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
+          <el-option v-for="item in options" :key="item.value1" :label="item.label1" :value="item.value1" />
+        </el-select>
+      </template>
+      <!-- <template #default="{ item }">
       <div class="value">{{ item.value }}</div>
       <span class="link">{{ item.link }}</span>
     </template> -->
-  </el-autocomplete> 
-</div>
+    </el-autocomplete>
+  </div>
 
   <!-- <el-autocomplete size="large" class="inline-input" v-model="state1" :fetch-suggestions="querySearch" clearable
     placeholder="输入关键字" @select="handleSelect" @clear="handleClear"></el-autocomplete> -->
