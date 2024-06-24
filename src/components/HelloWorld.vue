@@ -112,7 +112,7 @@ onMounted(() => {
 
   <div class="my-autocomplete">
     <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
-      popper-append-to-body=false @select="handleSelect" @clear="handleClear">
+    :popper-append-to-body="false" @select="handleSelect" @clear="handleClear">
 
       <template #prepend>
         <el-select size="default" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
