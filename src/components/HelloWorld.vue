@@ -121,7 +121,7 @@ onMounted(() => {
     :popper-append-to-body="false" @select="handleSelect" @clear="handleClear">
 
       <template #prepend>
-        <el-select size="default" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
+        <el-select size="default" v-model="select" style="width: 120px;" placeholder="一级项目" @change="handleChange">
           <el-option v-for="item in options" :key="item.value1" :label="item.label1" :value="item.value1" />
         </el-select>
       </template>
