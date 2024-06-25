@@ -38,6 +38,8 @@ const state4 = ref('')
 const state5 = ref('')
 const state6 = ref('')
 const state7 = ref('')
+const state8 = ref('')
+const state9 = ref('')
 const isShow = ref(false)
 
 const restaurants = ref<RestaurantItem[]>([])
@@ -65,9 +67,11 @@ const handleSelect = (item: RestaurantItem) => {
   state2.value = item.value
   state3.value = item.fun1
   state4.value = item.time1
-  state5.value = item.req1
-  state6.value = item.factor1
-  state7.value = item.sign1
+  state5.value = item.price1
+  state6.value = item.req1
+  state7.value = item.factor1
+  state8.value = item.sign1
+  state9.value = item.mark1
 }
 
 const handleClear = (item: RestaurantItem) => {
@@ -151,22 +155,38 @@ onMounted(() => {
       <el-divider />
 
     </el-row>
+
+
+    <el-row>
+      <span><el-text class="mx-1" type="warning" size="large">标准价格（元）: </el-text>
+        <el-text size="large"> {{ state5 }}</el-text></span>
+      <el-divider />
+
+    </el-row>
+
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">标本要求: </el-text>
-        <el-text size="large"> {{ state5 }}</el-text></span>
+        <el-text size="large"> {{ state6 }}</el-text></span>
       <el-divider />
 
     </el-row>
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">标本保存条件: </el-text>
-        <el-text size="large"> {{ state6 }}</el-text></span>
+        <el-text size="large"> {{ state7 }}</el-text></span>
       <el-divider />
 
     </el-row>
 
     <el-row>
       <span><el-text class="mx-1" type="warning" size="large">临床意义: </el-text>
-        <el-text size="large"> {{ state7 }}</el-text></span>
+        <el-text size="large"> {{ state8 }}</el-text></span>
+      <el-divider />
+
+    </el-row>
+
+    <el-row>
+      <span><el-text class="mx-1" type="warning" size="large">备注: </el-text>
+        <el-text size="large"> {{ state9 }}</el-text></span>
       <el-divider />
 
     </el-row>
