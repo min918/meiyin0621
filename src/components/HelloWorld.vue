@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import jsonData from './../data/data1.json';
-import optionsData from './../data/data2.json';
+import optionsData from './../data/data3.json';
 
 const select = ref('')
 
@@ -9,9 +9,11 @@ interface RestaurantItem {
   value: string,
   fun1: string,
   time1: string,
+  price1: string,
   req1: string,
   factor1: string,
-  sign1: string
+  sign1: string,
+  mark1: string
 }
 
 interface Items {
