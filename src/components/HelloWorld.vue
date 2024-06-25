@@ -24,7 +24,7 @@ interface Items {
 interface data {
   value1: string,
   label1: string,
-  data:[]
+  data: []
 }
 
 const datas = ref<data>()
@@ -76,9 +76,9 @@ const handleClear = (item: RestaurantItem) => {
 
 const handleChange = (item: Items) => {
   const results = optionsData.filter(item1 => item1.value1 === item);
-  // console.log(results[0].data)
   restaurants.value = results[0].data
-
+  state1.value = ''
+  isShow.value = false
 }
 
 onMounted(() => {
@@ -106,32 +106,27 @@ onMounted(() => {
           <el-option label="电解质检测" value="3" />
         </el-select>
     </template>
-    <template #default="{ item }">
+<template #default="{ item }">
       <div class="value">{{ item.value }}</div>
       <span class="link">{{ item.link }}</span>
     </template>
-  </el-autocomplete> -->
+</el-autocomplete> -->
 
   <div class="my-autocomplete">
-  <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable
-    placeholder="输入关键字" @select="handleSelect" @clear="handleClear">
-  
-    <template #prepend>
-      <el-select size="default" v-model="select" placeholder="一级项目" style="width: 150px" @change="handleChange">
-        <el-option
-        v-for="item in options"
-        :key="item.value1"
-        :label="item.label1"
-        :value="item.value1"
-      />
-      </el-select>
-    </template>
-    <!-- <template #default="{ item }">
+    <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
+    :popper-append-to-body="false" @select="handleSelect" @clear="handleClear">
+
+      <template #prepend>
+        <el-select size="default" v-model="select" style="width: 80px;" placeholder="一级项目" @change="handleChange">
+          <el-option v-for="item in options" :key="item.value1" :label="item.label1" :value="item.value1" />
+        </el-select>
+      </template>
+      <!-- <template #default="{ item }">
       <div class="value">{{ item.value }}</div>
       <span class="link">{{ item.link }}</span>
     </template> -->
-  </el-autocomplete> 
-</div>
+    </el-autocomplete>
+  </div>
 
   <!-- <el-autocomplete size="large" class="inline-input" v-model="state1" :fetch-suggestions="querySearch" clearable
     placeholder="输入关键字" @select="handleSelect" @clear="handleClear"></el-autocomplete> -->
