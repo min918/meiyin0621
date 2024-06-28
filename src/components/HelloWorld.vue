@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import jsonData from './../data/data1.json';
-import optionsData from './../data/data3.json';
+import jsonData from './../data/data4.json';
+import optionsData from './../data/options.json';
 
 const select = ref('')
 
 interface RestaurantItem {
+  key: string,
   value: string,
   fun1: string,
   time1: string,
@@ -57,10 +58,6 @@ const createFilter = (queryString: string) => {
   }
 }
 
-const loadAll = () => {
-  return jsonData;
-}
-
 const handleSelect = (item: RestaurantItem) => {
   console.log(item)
   isShow.value = true
@@ -79,14 +76,16 @@ const handleClear = (item: RestaurantItem) => {
 }
 
 const handleChange = (item: Items) => {
-  const results = optionsData.filter(item1 => item1.value1 === item);
-  restaurants.value = results[0].data
+  item.value1
+  const results = jsonData.filter(item1 => item1.key === item);
+  restaurants.value = results
   state1.value = ''
   isShow.value = false
 }
 
 onMounted(() => {
   options.value = optionsData
+  restaurants.value = jsonData
 })
 
 </script>
@@ -96,44 +95,13 @@ onMounted(() => {
 
   <h1 color="$ep-color-primary">项目查询</h1>
 
-  <!-- <el-autocomplete
-    v-model="state1"
-    :fetch-suggestions="querySearch"
-    popper-class="my-autocomplete"
-    placeholder="Please input"
-    @select="handleSelect"
-  >
-    <template #prepend>
-      <el-select v-model="select" placeholder="Select" style="width: 100px">
-          <el-option label="肝胆功能检测" value="1" />
-          <el-option label="肾功能检测" value="2" />
-          <el-option label="电解质检测" value="3" />
+  <el-space fill spacer size="10" fill-ratio="10" direction="horizontal" style="width: 90%">
+    <el-select round size="default" v-model="select" placeholder="一级项目" @change="handleChange">
+      <el-option v-for="item in options" :key="item.value1" :label="item.label1" :value="item.value1" />
         </el-select>
-    </template>
-<template #default="{ item }">
-      <div class="value">{{ item.value }}</div>
-      <span class="link">{{ item.link }}</span>
-    </template>
-</el-autocomplete> -->
-
-  <div class="my-autocomplete">
     <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
-    :popper-append-to-body="false" @select="handleSelect" @clear="handleClear">
-
-      <template #prepend>
-        <el-select size="default" v-model="select" style="width: 120px;" placeholder="一级项目" @change="handleChange">
-          <el-option v-for="item in options" :key="item.value1" :label="item.label1" :value="item.value1" />
-        </el-select>
-      </template>
-      <!-- <template #default="{ item }">
-      <div class="value">{{ item.value }}</div>
-      <span class="link">{{ item.link }}</span>
-    </template> -->
-    </el-autocomplete>
-  </div>
-
-  <!-- <el-autocomplete size="large" class="inline-input" v-model="state1" :fetch-suggestions="querySearch" clearable
-    placeholder="输入关键字" @select="handleSelect" @clear="handleClear"></el-autocomplete> -->
+      :popper-append-to-body="false" @select="handleSelect" @clear="handleClear" />
+  </el-space>
 
   <div class="bottom-section" v-if="isShow">
     <el-row>
