@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import jsonData from './../data/data1.json';
-import optionsData from './../data/data3.json';
+import jsonData from './../data/data2.json';
+import optionsData from './../data/options.json';
 
 const select = ref('')
 
@@ -57,10 +57,6 @@ const createFilter = (queryString: string) => {
   }
 }
 
-const loadAll = () => {
-  return jsonData;
-}
-
 const handleSelect = (item: RestaurantItem) => {
   console.log(item)
   isShow.value = true
@@ -79,7 +75,8 @@ const handleClear = (item: RestaurantItem) => {
 }
 
 const handleChange = (item: Items) => {
-  const results = optionsData.filter(item1 => item1.value1 === item);
+  item.value1
+  const results = jsonData.filter(item1 => item1.value1 === item);
   restaurants.value = results[0].data
   state1.value = ''
   isShow.value = false
