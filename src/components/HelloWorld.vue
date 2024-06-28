@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import jsonData from './../data/data2.json';
+import jsonData from './../data/data4.json';
 import optionsData from './../data/options.json';
 
 const select = ref('')
 
 interface RestaurantItem {
+  key: string,
   value: string,
   fun1: string,
   time1: string,
@@ -76,14 +77,15 @@ const handleClear = (item: RestaurantItem) => {
 
 const handleChange = (item: Items) => {
   item.value1
-  const results = jsonData.filter(item1 => item1.value1 === item);
-  restaurants.value = results[0].data
+  const results = jsonData.filter(item1 => item1.key === item);
+  restaurants.value = results
   state1.value = ''
   isShow.value = false
 }
 
 onMounted(() => {
   options.value = optionsData
+  restaurants.value = jsonData
 })
 
 </script>
