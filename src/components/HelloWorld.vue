@@ -95,24 +95,38 @@ onMounted(() => {
 
   <h1 color="$ep-color-primary">项目查询</h1>
 
-  <el-space fill spacer size="10" fill-ratio="10" direction="horizontal" style="width: 90%">
+  <div class="m-4">
+    <p style="text-align: left;">项目分类：</p>
     <el-select round size="default" v-model="select" placeholder="一级项目" @change="handleChange">
       <el-option v-for="item in options" :key="item.value1" :label="item.label1" :value="item.value1" />
-        </el-select>
+    </el-select>
+  </div>
+  <div class="m-4">
+    <p style="text-align: left;">项目名称：</p>
     <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
       :popper-append-to-body="false" @select="handleSelect" @clear="handleClear" />
-  </el-space>
+  </div>
+  <div class="m-4">
+    <p style="text-align: left;">临床意义：</p>
+    <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
+      :popper-append-to-body="false" @select="handleSelect" @clear="handleClear" />
+  </div>
+  <div class="m-4">
+    <!-- <el-button size="large" round>Search</el-button> -->
+    <el-button type="success" round>查询</el-button>
+
+  </div>
 
   <div class="bottom-section" v-if="isShow">
     <el-row>
-      <span><el-text class="mx-1" type="warning" size="large">检测项目:</el-text>
-        <el-text size="large"> {{ state2 }}</el-text></span>
+      <span><el-text class="mx-1" type="warning" size="default">检测项目:</el-text>
+        <el-text size="default"> {{ state2 }}</el-text></span>
       <el-divider />
 
     </el-row>
     <el-row>
-      <span><el-text class="mx-1" type="warning" size="large">检测方法: </el-text>
-        <el-text size="large"> {{ state3 }}</el-text></span>
+      <span><el-text class="mx-1" type="warning" size="default">检测方法: </el-text>
+        <el-text size="default"> {{ state3 }}</el-text></span>
       <el-divider />
 
     </el-row>
