@@ -205,13 +205,13 @@ const createFilter3 = (queryString: string) => {
 
   <div class="bottom-section" v-if="isShow">
     <el-row>
-      <span><el-text class="mx-1" type="warning" size="default">检测项目:</el-text>
+      <span><el-text class="mx-1" type="warning" size="large">检测项目:</el-text>
         <el-text size="default"> {{ state2 }}</el-text></span>
       <el-divider />
 
     </el-row>
     <el-row>
-      <span><el-text class="mx-1" type="warning" size="default">检测方法: </el-text>
+      <span><el-text class="mx-1" type="warning" size="large">检测方法: </el-text>
         <el-text size="default"> {{ state3 }}</el-text></span>
       <el-divider />
 
