@@ -148,18 +148,18 @@ const doSearch = (cb: any) => {
 
   <div class="m-4">
     <p style="text-align: left;font-weight: bold;">项目分类：</p>
-    <el-select round size="default" v-model="select" placeholder="一级项目" @change="handleChange">
+    <el-select round size="large" v-model="select" placeholder="一级项目" @change="handleChange">
       <el-option v-for="item in options" :key="item.value1" :label="item.label1" :value="item.value1" />
     </el-select>
   </div>
   <div class="m-4">
     <p style="text-align: left;font-weight: bold;">项目名称：</p>
-    <el-autocomplete size="default" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
+    <el-autocomplete size="large" v-model="state1" :fetch-suggestions="querySearch" clearable placeholder="输入关键字"
       :popper-append-to-body="false" @select="handleSelect" @clear="handleClear" />
   </div>
   <div class="m-4">
     <p style="text-align: left;font-weight: bold;">临床意义：</p>
-    <el-input v-model="sign1" placeholder="输入关键字，然后点击查询" />
+    <el-input size="large" v-model="sign1" placeholder="输入关键字，然后点击查询" />
   </div>
   <div class="m-4">
     <!-- <el-button size="large" round>Search</el-button> -->
