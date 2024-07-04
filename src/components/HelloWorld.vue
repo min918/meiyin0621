@@ -100,8 +100,15 @@ const doSearch = (cb: any) => {
   }
 
   if (null != param1.value) {
-    console.log(param1.value)
-    isEvery.value = isEvery.value.filter(item1 => item1.value.match(param1.value));
+    // console.log(param1.value)
+    // isEvery.value.forEach(element => {
+    //   if(element.value.indexOf(param1.value.substring(0,5)) >-1){
+    //     console.log(element.value)
+    //     console.log(param1.value)
+    //     console.log("===>"+element.value.includes(param1.value))
+    //   }
+    // });
+    isEvery.value = isEvery.value.filter(item1 => item1.value.includes(param1.value));
   }
 
   if (null != param2.value) {
@@ -130,50 +137,6 @@ const doSearch = (cb: any) => {
   }
 
 }
-
-const querySearch1 = (queryString: string, cb: any) => {
-  const results = queryString
-    ? restaurants.value.filter(createFilter1(queryString))
-    : restaurants.value
-  return results;
-}
-const createFilter1 = (queryString: string) => {
-  return (restaurant: RestaurantItem) => {
-    return (
-      restaurant.key.toLowerCase().match((queryString.toLowerCase()))
-    )
-  }
-}
-
-const querySearch2 = (queryString: string, cb: any) => {
-  const results = queryString
-    ? restaurants.value.filter(createFilter2(queryString))
-    : restaurants.value
-  return results;
-}
-const createFilter2 = (queryString: string) => {
-  return (restaurant: RestaurantItem) => {
-    return (
-      restaurant.value.toLowerCase().match((queryString.toLowerCase()))
-    )
-  }
-}
-
-const querySearch3 = (queryString: string, cb: any) => {
-  const results = queryString
-    ? restaurants.value.filter(createFilter1(queryString))
-    : restaurants.value
-  return results;
-}
-const createFilter3 = (queryString: string) => {
-  return (restaurant: RestaurantItem) => {
-    return (
-      restaurant.sign1.toLowerCase().match((queryString.toLowerCase()))
-    )
-  }
-}
-
-
 
 </script>
 
